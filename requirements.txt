@@ -22,6 +22,8 @@ tqdm==4.56.0
 Jinja2==2.10
 Flask
 flask_mysqldb
+bs4
+statistics
 MySQL
 datetime
 
