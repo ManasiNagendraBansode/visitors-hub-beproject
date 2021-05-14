@@ -22,7 +22,6 @@ tqdm==4.56.0
 Jinja2==2.10
 Flask
 MySQL
-mlmodel
 datetime
 csv
 pickle
