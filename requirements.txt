@@ -23,6 +23,5 @@ Jinja2==2.10
 Flask
 MySQL
 datetime
-re
 os
 string
