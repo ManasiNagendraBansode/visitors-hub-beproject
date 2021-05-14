@@ -21,6 +21,7 @@ threadpoolctl==2.1.0
 tqdm==4.56.0
 Jinja2==2.10
 Flask
+flask_mysqldb
 MySQL
 datetime
 
