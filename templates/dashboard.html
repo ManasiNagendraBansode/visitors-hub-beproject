@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin dashboard</title>
+    <style>
+        body {
+            background-image: url('https://ak.picdn.net/shutterstock/videos/20709541/thumb/1.jpg');
+            background-size: cover;
+            background-repeat: repeat;
+        }
+        
+        table.dataframe, .dataframe th, .dataframe td {
+        border: none;
+        border-bottom: 1px solid #C8C8C8;
+        border-collapse: collapse;
+        text-align:left;
+        padding: 10px;
+        margin-bottom: 40px;
+        font-size: 0.9em;
+        }
+
+        tr:nth-child(odd)		{ background-color:#eee; }
+        tr:nth-child(even)	{ background-color:#fff; }
+
+        tr:hover            { background-color: #ffff99;}
+        
+        h1 {
+            align: center;
+            color: black;
+            font-size: 78px;
+            text-shadow: 2px 2px goldenrod;
+        }
+        
+        h2 {
+            align: center;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 72px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: right;
+        }
+        
+        caption {
+            font-size: 30px;
+        }
+        
+        table.pos_fixed1 {
+            position: fixed;
+            center: 10px;
+            left: 80x;
+        }
+        
+        table.pos_fixed2 {
+            position: fixed;
+            centre: 10px;
+            right: 80px;
+        }
+        
+        .tab {
+            float: left;
+            border: 1px solid #ccc;
+            width: 20%;
+            background-color: chocolate;
+            height: 300px;
+        }
+        /* Style the buttons inside the tab */
+        
+        .tab button {
+            display: block;
+            background-color: inherit;
+            color: black;
+            padding: 22px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        /* Change background color of buttons on hover */
+        
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        /* Create an active/current "tab button" class */
+        
+        .tab button.active {
+            background-color: #ccc;
+        }
+        /* Style the tab content */
+        
+        .tabcontent {
+            float: left;
+            padding: 0px 12px;
+            width: 70%;
+            border-left: none;
+            height: 300px;
+        }
+        /* The grid: Three equal columns that floats next to each other */
+        
+        .column {
+            float: left;
+            width: 15%;
+            padding: 8px;
+            text-align: center;
+            font-size: 15px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .containerTab {
+            padding: 20px;
+            color: black;
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Closable button inside the container tab */
+        
+        .closebtn {
+            float: right;
+            color: black;
+            font-size: 75px;
+            cursor: pointer;
+        }
+        .column:hover {
+            transform: scale(1.15);
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.6);
+            }
+
+
+    </style>
+</head>
+
+<body>
+    <center>
+
+        <hr>
+
+        <a href="HomePage.html"><button class="button">LogOut</button></a>
+        <img src="https://st2.depositphotos.com/5943796/11454/v/600/depositphotos_114540408-stock-illustration-initial-letter-vh-silver-gold.jpg" alt="coffeesymbol" width="200px;" height:="200px;" style="float:left">
+        <h1><u>The Visitor's Hub</u></h1>
+        <br>
+        <hr>
+        <marquee>
+            <h2>Admin Dashboard</h2>
+        </marquee>
+    </center>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'users')" id="defaultOpen">User Details</button>
+        <button class="tablinks" onclick="openCity(event, 'booking')">Booking Details</button>
+        <button class="tablinks" onclick="openCity(event, 'review')">Review Classification</button>
+        <button class="tablinks" onclick="openCity(event, 'SuspeciousReview')">Suspecious Review </button>
+        <button class="tablinks" onclick="openCity(event, 'DeceptiveReview')">Deceptive Review Prediction</button>
+    </div>
+
+
+    <div id="users" class="tabcontent">
+        <table>
+            <caption>Users</caption>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password </th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in value %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="booking" class="tabcontent">
+        <table>
+            <caption>Room Booking Details</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email </th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>checkin</th>
+                    <th>No of people</th>
+                    <th>No of rooms </th>
+                    <th>Additional Request</th>
+                    <th>checkout</th>
+                    <th>hotel</th>
+                    <th>city_of_hotel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in value1 %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[7]}}</td>
+                    <td>{{row[8]}}</td>
+                    <td>{{row[9]}}</td>
+                    <td>{{row[10]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <table>
+            <caption>Table Booking Details</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email </th>
+                    <th>Phone</th>
+                    <th>Date </th>
+                    <th>Time</th>
+                    <th>No of people</th>
+                    <th>Additional Request</th>
+                    <th>hotel</th>
+                    <th>city_of_hotel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in value2 %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[7]}}</td>
+                    <td>{{row[8]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <div id="review" class="tabcontent">
+        <h31review</h1>
+            <div class="row">
+                <div tabindex="1" class="column" onclick="openTab('pune');" style="background:chocolate;">
+                    <h2 id="Pune" >Pune</h2>
+                </div>
+                <div tabindex="2" class="column" onclick="openTab('mumbai');" style="background:chocolate;">
+                    <h2 id="Mumbai" >Mumbai</h2>
+                </div>
+                <div tabindex="3" class="column" onclick="openTab('bangalore');" style="background:chocolate;">
+                    <h2 id="Bangalore"  >Bangalore</h2>
+                </div>
+                <div tabindex="4" class="column" onclick="openTab('kolkata');" style="background:chocolate;">
+                    <h2 id="Kolkata"  >Kolkata</h2>
+                </div>
+            </div>
+            <div id="pune" class="containerTab" style="display:none;">
+                {% block content %}
+                {{ value3.to_html(classes="table table-striped") | safe}}
+                {% endblock %}
+
+            </div>
+
+            <div id="mumbai" class="containerTab" style="display:none;">
+                {% block content1 %}
+                {{ value4.to_html(classes="table table-striped") | safe}}
+                {% endblock %}
+
+            </div>
+
+            <div id="bangalore" class="containerTab" style="display:none;">
+                {% block content2 %}
+                {{ value6.to_html(classes="table table-striped") | safe}}
+                {% endblock %}
+
+            </div>
+
+            <div id="kolkata" class="containerTab" style="display:none;">
+                {% block content3 %}
+                {{ value5.to_html(classes="table table-striped") | safe}}
+                {% endblock %}
+
+            </div>
+
+    </div>
+    <div id="SuspeciousReview" class="tabcontent">
+
+        <table>
+            <caption>Suspecious Review Detail Using IP Module</caption>
+            <thead>
+                <tr>
+                    <th>IP Address</th>
+                    <th>Users</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in value7 %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+
+        <table>
+            <caption>Suspecious Review Detail Using Date Module</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Hotel</th>
+                    <th>City</th>
+                    <th>review</th>
+                    <th>Date of review</th>
+                    <th>Review Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in value8 %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="DeceptiveReview" class="tabcontent">
+                <div class="row">
+                    <div tabindex="1" class="column" onclick="openTab('pune1');" style="background:chocolate;">
+                        <h2 id="Pune" >Pune</h2>
+                    </div>
+                    <div tabindex="2" class="column" onclick="openTab('mumbai1');" style="background:chocolate;">
+                        <h2 id="Mumbai" >Mumbai</h2>
+                    </div>
+                    <div tabindex="3" class="column" onclick="openTab('bangalore1');" style="background:chocolate;">
+                        <h2 id="Bangalore"  >Bangalore</h2>
+                    </div>
+                    <div tabindex="4" class="column" onclick="openTab('kolkata1');" style="background:chocolate;">
+                        <h2 id="Kolkata"  >Kolkata</h2>
+                    </div>
+                </div>
+                <div id="pune1" class="containerTab" style="display:none;">
+
+                    <table style="margin-left: 20px;">
+                    <!-- Table headers -->
+                        <th>
+                            <tr style="color: black; padding:10px 25px">
+                                <td><b>Review Number</b></td>
+                                <td><b>User</b></td>
+                                <td><b>Hotels</b></td>
+                                <td><b>Deceptive Reviews</b></td>
+                                <td><b>Delete Reviews</b></td>
+                            </tr>
+                        </th>
+
+                    <!-- For loop logic of jinja template -->
+
+                    {%for i in range(0, value21)%}
+
+                    <!-- table rows -->
+                        <tr>
+                            <td>{{value25[i]}}</td>
+                            <td>{{value9[i]}}</td>
+                            <td>{{value10[i]}}</td>
+                            <td>{{value11[i]}}</td>
+
+                            <td><a class="button" href="{{url_for('delete', ReviewID=value25[i])}}" style="color:black; background-color:red;padding:10px 50px">Delete</a></td>
+                    {%endfor%}
+
+                        </tr>
+
+                    </table>
+
+
+    
+                </div>
+    
+                <div id="mumbai1" class="containerTab" style="display:none;">
+                     <table style="margin-left: 20px;">
+                    <!-- Table headers -->
+                        <th>
+                            <tr style="color:black; padding:10px 25px">
+                                <td><b>Review Number</b></td>
+                                <td><b>User</b></td>
+                                <td><b>Hotels</b></td>
+                                <td><b>Deceptive Reviews</b></td>
+                                <td><b>Delete Reviews</b></td>
+                            </tr>
+                        </th>
+
+                    <!-- For loop logic of jinja template -->
+
+                    {%for i in range(0, value22)%}
+
+                    <!-- table rows -->
+                        <tr>
+                            <td>{{value26[i]}}</td>
+                            <td>{{value12[i]}}</td>
+                            <td>{{value13[i]}}</td>
+                            <td>{{value14[i]}}</td>
+                            <td><a class="button" href="{{ url_for('delete', ReviewID=value26[i]) }}" style="color:black; background-color:red;padding:10px 50px">Delete</a></td>
+                    {%endfor%}
+
+                        </tr>
+
+                    </table>
+
+
+
+    
+                </div>
+    
+                <div id="bangalore1" class="containerTab" style="display:none;">
+                     <table style="margin-left: 20px;">
+                    <!-- Table headers -->
+                        <th>
+                            <tr style="color: black; padding:10px 25px">
+                                <td><b>Review Number</b></td>
+                                <td><b>User</b></td>
+                                <td><b>Hotels</b></td>
+                                <td><b>Deceptive Reviews</b></td>
+                                <td><b>Delete Reviews</b></td>
+                            </tr>
+                        </th>
+
+                    <!-- For loop logic of jinja template -->
+
+                    {%for i in range(0, value24)%}
+
+                    <!-- table rows -->
+                        <tr>
+                            <td>{{value28[i]}}</td>
+                            <td>{{value18[i]}}</td>
+                            <td>{{value19[i]}}</td>
+                            <td>{{value20[i]}}</td>
+                            <td><a class="button" href="{{ url_for('delete', ReviewID=value28[i]) }}" style="color:black; background-color:red;padding:10px 50px">Delete</a></td>
+                    {%endfor%}
+
+                        </tr>
+
+                    </table>
+    
+                </div>
+    
+                <div id="kolkata1" class="containerTab" style="display:none;">
+                     <table style="margin-left: 20px;">
+                    <!-- Table headers -->
+                        <th>
+                            <tr style="color: black; padding:10px 25px ">
+                                <td><b>Review Number</b></td>
+                                <td><b>User</b></td>
+                                <td><b>Hotels</b></td>
+                                <td><b>Deceptive Reviews</b></td>
+                                <td><b>Delete Reviews</b></td>
+                            </tr>
+                        </th>
+
+                    <!-- For loop logic of jinja template -->
+
+                    {%for i in range(0, value23)%}
+
+                    <!-- table rows -->
+                        <tr>
+                            <td>{{value27[i]}}</td>
+                            <td>{{value15[i]}}</td>
+                            <td>{{value16[i]}}</td>
+                            <td>{{value17[i]}}</td>
+                            <td><a class="button" href="{{ url_for('delete', ReviewID=value27[i]) }}" style="color:black; background-color:red;padding:10px 50px">Delete</a></td>
+                    {%endfor%}
+
+                        </tr>
+
+                    </table>
+    
+                </div>
+    
+
+    </div>
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerTab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById('cityTitle').style.color = "blue";
+        }
+        function selectedCity(cityTitle) {
+            document.getElementById('cityTitle').style.color = "blue";
+        }
+            </script>
+
+</body>
+
+</html>

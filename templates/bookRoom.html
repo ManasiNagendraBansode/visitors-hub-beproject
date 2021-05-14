@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Book Room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .banner {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://static2.bigstockphoto.com/9/1/2/large1500/219903034.jpg") center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding-bottom: 20px;
+        }
+        
+        .banner h2 {
+            padding-bottom: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .card-content {
+            background: #fff;
+            height: 330px;
+        }
+        
+        .form-row {
+            display: flex;
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        form select,
+        form input {
+            display: block;
+            width: 100%;
+            margin: 15px 12px;
+            padding: 5px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #eee;
+            font-weight: 300;
+        }
+        
+        form input[type=text],
+        form input[type=number],
+        form input::placeholder,
+        select {
+            color: #9a9a9a;
+        }
+        
+        form input[type=submit] {
+            color: #fff;
+            background: #f2745f;
+            padding: 12px 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        form input[type=submit]:hover {
+            opacity: 0.9;
+        }
+        
+        @media(max-width: 992px) {
+            .card-container {
+                grid-template-columns: 100%;
+                width: 100vw;
+            }
+            .card-img {
+                height: 330px;
+            }
+            .banner-button {
+                background-color: rgb(71, 17, 17);
+                border: none;
+                color: white;
+                padding: 15px 15px 15px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 20px;
+                cursor: pointer;
+                float: left;
+            }
+        }
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: left;
+        }
+        input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: #eee;
+  height:30px;
+  font-size:14pt;
+  width: 210px;
+  text-align: center;
+}
+    </style>
+</head>
+
+<body>
+    <section class="banner">
+        <a href="index.html"><button class="button">Back</button></a>
+        <h2>Make Room Reservations in Minutes</h2>
+
+        <div class="card-content">
+
+            <form method="POST" action="/Booked.html">
+
+                <div class="form-row">
+                    <label style="color:black">Booking room in</label>
+                    <input id="hotel1" type="text" placeholder="Hotel" name="hotel1">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" placeholder="Full Name" name="fullname">
+                    <input type="text" placeholder="Email" name="email">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" placeholder="Phone Number" name="phone" id="phone">
+                    <input type="text" placeholder="City" name="city">
+                </div>
+
+                <div class="form-row">
+                    <label style="color:black">From</label>
+                    <input type="date" placeholder="From" name="checkin">
+                    <label style="color:black">To</label>
+                    <input type="date" placeholder="To" name="checkout">
+                    <input type="number" placeholder="No. of People" min="1" name="no_of_people">
+                </div>
+
+                <div class="form-row">
+                    <input type="number" placeholder="No. of rooms" min="1" name="no_of_rooms">
+
+                    <input type="text" placeholder="Other needs" name="other_needs">
+
+
+                </div>
+
+                <div class="form-row">
+                    <input type="submit" value="BOOK Room" class="submit">
+                </div>
+            </form>
+        </div>
+        </div>
+    </section>
+
+
+    <script>
+        function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    var hotel = getParameterByName('hotel');
+    document.getElementById("hotel1").value = hotel;
+
+    </script>
+
+
+</body>
+
+</html>

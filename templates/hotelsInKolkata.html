@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+         * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* The grid: Three equal columns that floats next to each other */
+        
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+            text-align: center;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .containerTab {
+            padding: 20px;
+            color: black;
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Closable button inside the container tab */
+        
+        .closebtn {
+            float: right;
+            color: black;
+            font-size: 35px;
+            cursor: pointer;
+        }
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            display: inline-table;
+            height: 300px;
+            transition: 1s ease;
+            cursor: pointer;
+            margin:10px;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 6px 2px black(255, 230, 0, 0.75), 0 35px 25px -15px rgba(0, 0, 0, 0.5);
+            position: relative;
+
+        }
+        .card:focus {
+        outline: 0;
+        z-index: 10;
+        background-color: rgba(244, 250, 54, 0.8);
+    }
+    .card:focus:after {
+        position: relative;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 3px solid rgba(244, 250, 54, 0.6);
+    }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+        
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+        
+        .card button:hover {
+            opacity: 0.7;
+        }
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        
+        .row1 {
+            display: flex;
+        }
+        /* Create three equal columns that sits next to each other */
+        
+        .column1 {
+            flex: 33.33%;
+            padding: 5px;
+        }
+        
+        h2 {
+            font-size: 40px;
+        }
+        
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: left;
+        }
+        
+        .button1 {
+            background-color: black;
+            border: white;
+            border-radius: 12px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: none;
+        }
+        
+        input[type=text] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        
+        input,
+        input::-webkit-input-placeholder {
+            font-size: 20px;
+        }
+/* css for review displayed */
+    .container {
+    border: 2px solid #ccc;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 16px;
+    margin: 16px 0
+    }
+
+    .container::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+
+    .container img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    }
+
+    .container span {
+    font-size: 20px;
+    margin-right: 15px;
+    }
+
+    @media (max-width: 500px) {
+    .container {
+        text-align: center;
+    }
+    .container img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
+    }
+    /*code for highlighting card*/
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+select {
+      height : 50px;
+        width: 200px;
+        margin: 10px;
+        font-size :20px;
+    }
+span{
+    color: red;
+    font-size: 40px;
+}
+
+
+ .fa-star {
+        font-size : 50px;
+
+    }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div style="text-align:center">
+        <a href="index.html"><button class="button">Back</button></a>
+
+        <h2><i class="fas fa-hotel"></i> Hotels In Kolkata</h2>
+    </div>
+    <hr>
+    <!-- Three columns -->
+    <div class="row">
+        <div tabindex="1" class="card" onclick="openTab('ITC');">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/d7/36/81/exterior.jpg?w=900&h=-1&s=1" alt="ITC" style="width:100%">
+            <h1> ITC Royal Bengal </h1>
+            <p class="price"> Rs 4,098</p>
+            <p>ITC ,a Luxury Collection Hotel,features accommodation and restaurant</p>
+            <a href="bookRoom.html?hotel=ITC,Kolkata" id="a9">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=ITC,Kolkata">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="2" class="card" onclick="openTab('Oberoi');">
+            <img src="https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/200701171150375566-ecf173de210411e49e1c36cfdd80c293.jpg?&output-quality=75&downsize=520:350&crop=520:350;2,0&output-format=jpg" alt="Oberoi" style="width:100%">
+            <h1>The Oberoi Grand </h1>
+            <p class="price"> Rs 5,098</p>
+            <p> The hotel is 3 km from Sealdah and 6 km from Howrah Railway Station.</p>
+            <a href="bookRoom.html?hotel=Oberoi,Kolkata" id="a10">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Oberoi,Kolkata">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="3" class="card" onclick="openTab('Taj');">
+            <img src="https://exp.cdn-hotels.com/hotels/1000000/470000/465100/465007/c5556b6d_z.jpg?impolicy=fcrop&w=500&h=333&q=high" alt="Taj" style="width:100%">
+            <h1>Taj Bengal</h1>
+            <p class="price"> Rs 3,998</p>
+            <p>Taj Bengal offers 5-star luxury with elegant rooms, an outdoor pool and spa</p>
+            <a href="bookRoom.html?hotel=Taj,Kolkata" id="a11">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Taj,Kolkata">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="4" class="card" onclick="openTab('Marriott');">
+            <img src="https://cleanindiagroup.com/wp-content/uploads/2017/09/121102-JW-Marriott-Kolkata-02.jpg" alt="Marriott" style="width:100%">
+            <h1 >JW Marriott Hotel</h1>
+            <p class="price"> Rs 6,908</p>
+            <p>The hotel has an assortment of on-site restaurants for guests to choose from.</p>
+            <a href="bookRoom.html?hotel=Marriott,Kolkata" id="a12">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Marriott,Kolkata">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Full-width columns: (hidden by default) -->
+    <div class="containerTab" id="ITC"  data-behavior="itc" style="display:none;" onclick="star('ITC');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/202/202992976.jpg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/202/202993023.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About ITC Royal Bengal </h2>
+        <p>Situated in Kolkata, 7 km from Indian Museum, ITC Royal Bengal, a Luxury Collection Hotel, Kolkata features accommodation with a restaurant, free private parking, a fitness centre and a bar. Featuring a garden, the 5-star hotel has air-conditioned
+            rooms with free WiFi, each with a private bathroom. The accommodation offers a 24-hour front desk, room service and currency exchange for guests.<br> At the hotel, the rooms include a desk and a flat-screen TV. All rooms have a wardrobe. A
+            buffet breakfast is available each morning at ITC Royal Bengal, a Luxury Collection Hotel, Kolkata.<br> The accommodation offers 5-star accommodation with a sauna and outdoor pool. Nandan is 7 km from ITC Royal Bengal, a Luxury Collection
+            Hotel, Kolkata, while New Market is 7 km from the property. The nearest airport is Netaji Subhash Chandra Bose International Airport, 12 km from the hotel.
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+            <i class="fas fa-dumbbell"></i> GYM
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitITCK">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed1" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st1"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st2"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st3"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st4"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st5"></i>
+               </div>
+
+                <p><h2>{{value4}} (Total Reviews: {{value12}})</h2></p>
+
+                {% for row in value %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab" id="Oberoi" data-behavior="oberoi" style="display:none;background:white" onclick="star('Oberoi');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/464/46433348.jpg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/464/46433098.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About The Oberoi Grand Kolkata</h2>
+        <p>Located in Kolkata’s main shopping district, the New Market and business district, The Oberoi Grand Kolkata houses an outdoor pool, gym and spa.
+            <br> The hotel is 3 km from Sealdah Railway Station and 6 km from Howrah Railway Station. Kolkata Airport is a 45-minute drive away. Offering pool and courtyard views, rooms at The Oberoi Grand feature a 32-inch flat-screen TV and a DVD player.
+            A personal safe and a minibar are included. Private bathrooms come with Ayurvedic toiletries.<br> Baan Thai offers Thai specialities. Alternatively, the pool bar offers light meals and refreshing drinks. Threesixtythree° offers European, Asian,
+            Japanese and Indian delights.
+
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitOberoiK">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed2" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st6"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st7"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st8"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st9"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st10"></i>
+               </div>
+
+                <p><h2>{{value5}} (Total Reviews: {{value14}})</h2></p>
+
+                {% for row in value1 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab" id="Taj"  data-behavior="taj" style="display:none;background:white"  onclick="star('Taj');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/190/19058620.jpg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://assets.telegraphindia.com/telegraph/DSC_1741.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About Taj Bengal </h2>
+        <p>Set in landscaped grounds in downtown Kolkata, Taj Bengal offers 5-star luxury with elegant rooms, an outdoor pool and spa. It features a 24-hour gym, free parking and 6 restaurants.<br> Taj Bengal is within 3 km of Kolkata's business district
+            and the National Library. It is 4 km from the well-known Eden Gardens and 19 km from Kolkata International Airport.<br> Air-conditioned rooms feature classic wood furnishings and fabrics of cream and gold. They come with a tea/coffee maker,
+            minibar and an electronic safe. Guests can enjoy traditional Indian massages at Taj Spa & Salon after a day of activity. The property also houses a well-equipped business centre.<br> Dining highlights include the award-winning Hub - The Coffee
+            Shop, which features international favourites 24 hours a day. Indian specialities are served at Sonargaon, Eastern Mediterranean cuisine at Souk and Chinese Specialties at Chinoiserie while The Promenade Lounge offers afternoon tea. The hotel
+            also has an award winning Bar – The Junction.</p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitTajK">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed3" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                 <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st11"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st12"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st13"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st14"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st15"></i>
+               </div>
+
+                <p><h2>{{value6}} (Total Reviews: {{value15}})</h2></p>
+
+                {% for row in value2 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab" id="Marriott" data-behavior="marriott" style="display:none;background:white" onclick="star('Marriott');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/230/230616675.jpg" alt="Snow" style="width:100% ">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/246/246371107.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About JW Marriott Hotel</h2>
+        <p>JW Marriott Hotel Kolkata offers accommodation in Tangra and is located 7 km from the new business district. The hotel has an assortment of on-site restaurants for guests to choose from. Free WiFi is available throughout the property.<br> It has
+            a fully equipped fitness centre while the holistic Spa by JW offers a host of therapies along with an outdoor infinity pool that allows you to relax. It also houses a unique feature in the form of a bridal room.<br> Each room offers a private
+            bathroom with complimentary toiletries and rooms that provide a sofa, iPod dock, tea/coffee maker, minibar and air conditioning. The on-site dining options include Vintage Asia - the Asian specialty cuisine restaurant, and JW Kitchen a 24
+            hour all day multi-cuisine dining. The JW Lounge and an edgy discotheque - Gold are also available to guests.
+
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitMarriottK">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st16"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st17"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st18"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st19"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st20"></i>
+               </div>
+
+                <p><h2>{{value7}} (Total Reviews: {{value13}})</h2></p>
+
+                {% for row in value3 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerTab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+          function star(behavior)
+        {
+          //alert("ITC1");
+          var val1,val2;
+          if(behavior=="ITC")
+            val1 = {{value8}}
+          else if(behavior=="Oberoi")
+            star1(behavior);
+          else if(behavior=="Taj")
+            star2(behavior);
+          else if(behavior=="Marriott")
+            star3(behavior);
+
+
+          val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st1").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st1, #st2").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st1, #st2, #st3").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st1, #st2, #st3, #st4").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st1, #st2, #st3, #st4, #st5").css("color", "yellow");
+
+          }
+        }
+
+        function star1(behavior)
+        {
+        var val1,val2;
+        val1 = {{value9}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st6").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st6, #st7").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st6, #st7, #st8").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st6, #st7, #st8, #st9").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st6, #st7, #st8, #st9, #st10").css("color", "yellow");
+
+          }
+        }
+
+        function star2(behavior)
+        {
+        var val1,val2;
+        val1 = {{value10}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st11").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st11, #st12").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st11, #st12, #st13").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st11, #st12, #st13, #st14").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st11, #st12, #st13, #st14, #st15").css("color", "yellow");
+
+          }
+        }
+
+         function star3(behavior)
+        {
+        var val1,val2;
+        val1 = {{value11}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st16").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st16, #st17").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st16, #st17, #st18").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st16, #st17, #st18, #st19").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st16, #st17, #st18, #st19, #st20").css("color", "yellow");
+
+          }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

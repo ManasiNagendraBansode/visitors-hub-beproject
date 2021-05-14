@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+         * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* The grid: Three equal columns that floats next to each other */
+        
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+            text-align: center;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .containerTab {
+            padding: 20px;
+            color: black;
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Closable button inside the container tab */
+        
+        .closebtn {
+            float: right;
+            color: black;
+            font-size: 35px;
+            cursor: pointer;
+        }
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            display: inline-table;
+            height: 300px;
+            transition: 1s ease;
+            cursor: pointer;
+            margin:10px;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 6px 2px black(255, 230, 0, 0.75), 0 35px 25px -15px rgba(0, 0, 0, 0.5);
+            position: relative;
+
+        }
+        .card:focus {
+        outline: 0;
+        z-index: 10;
+        background-color: rgba(244, 250, 54, 0.8);
+    }
+    .card:focus:after {
+        position: relative;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 3px solid rgba(244, 250, 54, 0.6);
+    }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+        
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+        
+        .card button:hover {
+            opacity: 0.7;
+        }
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        
+        .row1 {
+            display: flex;
+        }
+        /* Create three equal columns that sits next to each other */
+        
+        .column1 {
+            flex: 33.33%;
+            padding: 5px;
+        }
+        
+        h2 {
+            font-size: 40px;
+        }
+        
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: left;
+        }
+        
+        .button1 {
+            background-color: black;
+            border: white;
+            border-radius: 12px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: none;
+        }
+        
+        input[type=text] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        
+        input,
+        input::-webkit-input-placeholder {
+            font-size: 20px;
+        }
+/* css for review displayed */
+    .container {
+    border: 2px solid #ccc;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 16px;
+    margin: 16px 0
+    }
+
+    .container::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+
+    .container img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    }
+
+    .container span {
+    font-size: 20px;
+    margin-right: 15px;
+    }
+
+    @media (max-width: 500px) {
+    .container {
+        text-align: center;
+    }
+    .container img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
+    }
+    /*code for highlighting card*/
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+select {
+      height : 50px;
+        width: 200px;
+        margin: 10px;
+        font-size :20px;
+    }
+span{
+    color: red;
+    font-size: 40px;
+}
+
+ .fa-star {
+        font-size : 50px;
+
+    }
+
+
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div style="text-align:center">
+        <a href="index.html"><button class="button">Back</button></a>
+
+        <h2><i class="fas fa-hotel"></i> Hotels In Bangalore</h2>
+    </div>
+    <hr>
+    <!-- Three columns -->
+    <div class="row">
+        <div tabindex="1" class="card" onclick="openTab('WelcomHotel');">
+            <img src="https://media.hrs.com/media/image/c0/a9/a7/WelcomHotel_Bengaluru_CON-Bengaluru-Hotel_outdoor_area-658484.jpg" alt="WelcomHotel" style="width:100%">
+            <h1>WelcomHotel </h1>
+            <p class="price"> Rs 4,098</p>
+            <p>Offering an outdoor pool, a fitness centre and a spa and wellness centre,</p>
+            <a href="bookRoom.html?hotel=WelcomHotel,Bangalore" id="a13">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=WelcomHotel,Bangalore">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="2" class="card" onclick="openTab('Leela');">
+            <img src="https://lh3.googleusercontent.com/proxy/AeQA0La34e-b_NRmgJjT36GOJsUNY6drPaU0zozL7rfphE6WlH0YAgRoElabNfyuJX7eAQ5Ald1G9QV4BMZcj6g_yRCAxK17abKMx9thPXAlkUO-08M-R3dEvLZ-xLS833Mduc1u5oEQlcyvu4e7otDnn5k=s0-d" alt="Leela" style="width:100%">
+            <h1>The Leela Palace</h1>
+            <p class="price"> Rs 5,098</p>
+            <p> The hotel is 3 km from Sealdah and 6 km from Howrah Railway Station.</p>
+            <a href="bookRoom.html?hotel=Leela,Bangalore" id="a14">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Leela,Bangalore">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="3" class="card" onclick="openTab('Conrad');">
+            <img src="https://ak-d.tripcdn.com/images/2201180000014zu6j5C50_R_550_412_R5_Q70_D.jpg" alt="Conrad" style="width:100%">
+            <h1>Conrad Bengaluru</h1>
+            <p class="price"> Rs 3,998</p>
+            <p>Conrad Bengaluru is located in the heart of the central business district. </p>
+            <a href="bookRoom.html?hotel=Conrad,Bangalore" id="a15">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Conrad,Bangalore">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="4" class="card" onclick="openTab('Windsor');">
+            <img src="https://media-cdn.tripadvisor.com/media/photo-s/12/3d/02/9c/itc-windsor-bengaluru.jpg" alt="Windsor" style="width:100%">
+            <h1>ITC Windsor</h1>
+            <p class="price"> Rs 6,908</p>
+            <p>ITC offers a spacious outdoor pool, a gym with 24-hour room service, 4 resturants .</p>
+            <a href="bookRoom.html?hotel=Windsor,Bangalore" id="a16">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Windsor,Bangalore">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Full-width columns: (hidden by default) -->
+    <div class="containerTab" id="WelcomHotel" data-behavior="welcomhotel" style="display:none;" onclick="star('WelcomHotel');" >
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/229/229744068.jpg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/228/228548157.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About WelcomHotel Bengaluru</h2>
+        <p>Offering an outdoor pool, a fitness centre and a spa and wellness centre, WelcomHotel Bengaluru is located in Bangalore. It operates a 24-hour front desk to welcome guests at all hours. The hotel also offers happy hours at the bar lounge Swizzle.<br>            Each room here will provide you with a TV, air conditioning and a minibar. There is also an electric kettle. Featuring a shower, private bathroom also comes with a hairdryer and bathrobes. You can enjoy garden view from the room. Extras include
+            a seating area and satellite channels.<br> At WelcomHotel Bengaluru you will find a restaurant and a fitness centre. Other facilities offered at the property include meeting facilities, a shared lounge and a ticket service. The property offers
+            free parking.
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+            <i class="fas fa-dumbbell"></i> GYM
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitWelcomHotelB">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed1" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st1"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st2"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st3"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st4"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st5"></i>
+               </div>
+
+                <p><h2>{{value4}} (Total Reviews: {{value14}})</h2></p>
+
+                {% for row in value %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab" id="Leela" data-behavior="leela" style="display:none;background:white" onclick="star('Leela');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/464/46433348.jpg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/464/46433098.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About The Leela Palace</h2>
+        <p>Located in Kolkata’s main shopping district, the New Market and business district, The Oberoi Grand Kolkata houses an outdoor pool, gym and spa.
+            <br> The hotel is 3 km from Sealdah Railway Station and 6 km from Howrah Railway Station. Kolkata Airport is a 45-minute drive away. Offering pool and courtyard views, rooms at The Oberoi Grand feature a 32-inch flat-screen TV and a DVD player.
+            A personal safe and a minibar are included. Private bathrooms come with Ayurvedic toiletries.<br> Baan Thai offers Thai specialities. Alternatively, the pool bar offers light meals and refreshing drinks. Threesixtythree° offers European, Asian,
+            Japanese and Indian delights.
+
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitLeelaB">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed2" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                 <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st6"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st7"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st8"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st9"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st10"></i>
+               </div>
+
+                <p><h2>{{value5}} (Total Reviews: {{value13}})</h2></p>
+
+                {% for row in value1 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab" id="Conrad" data-behavior="conrad" style="display:none;background:white" onclick="star('Conrad');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/256/256156731.jpg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/256/256156464.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About Conrad Bengaluru</h2>
+        <p>Ideally located 500 m from MG Road, Conrad Bengaluru is located in the heart of the central business district. With five distinct dining venues, 24-hour fitness centre and an infinity pool, each room and suite overlooks the city skyline and Ulsoor
+            Lake.The hotel features a hot tub and a 24-hour front desk.<br> At the hotel, every room is equipped with a desk. The rooms are equipped with air conditioning and a TV, and selected rooms also feature a city view. The units at Conrad Bengaluru
+            are equipped with a private bathroom fitted with a bath or shower.<br> Guests at the accommodation can enjoy a buffet or a gluten-free breakfast. At Conrad Bengaluru you will find a restaurant serving European cuisine. At the hotel guests
+            are welcome to take advantage of a sauna.<br> Commercial Hubs in close proximity include RMZ Millenia 950 meters, RMZ Infinity, Old Madras Road 5 km away, Bagmane Techpark, CV Raman Nagar within 5.7 kilometers, Embassy Golf Links, Old Airport
+            Road 6 km and UB City 4 km from the property. Brigade Road is 1.8 km from Conrad Bengaluru. The nearest airport is Kempegowda International Airport, 38 km from the accommodation.
+
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitConradB">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed3" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st11"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st12"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st13"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st14"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st15"></i>
+               </div>
+
+
+                <p><h2>{{value6}} (Total Reviews: {{value12}})</h2></p>
+
+                {% for row in value2 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div  class="containerTab" id="Windsor" data-behavior="windsor" style="display:none;background:white" onclick="star('Windsor');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/280/280944053.jpg" alt="Snow" style="width:100% ">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/280/280944050.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About ITC Windsor</h2>
+        <p>Set just 3 km away from the business district, ITC Windsor Bengaluru offers a spacious outdoor pool, a gym with 24-hour room service, 4 resturants and 1 BAR. Elegantly furnished rooms are fitted with free Wi-Fi.<br> Conveniently placed 33 km away
+            from Bengaluru International Airport, the hotel is also 18 km away from Bangalore International Exhibition Centre and 2 km from Bangalore Palace.<br> Air-conditioned rooms are equipped with a sofa seating area, a cable TV or flat-screen TV,
+            a minibar and tea/coffee making facilities. En suite bathrooms include a bath, hot/cold shower facilities and free toiletries.<br> Guests can enjoy a range of spa treatments while a 24-hour front desk can assist with luggage storage travel
+            arrangements and round the clock in-room dining. Personal butler services are also available upon request.
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitWindsorB">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st16"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st17"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st18"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st19"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st20"></i>
+               </div>
+
+                <p><h2>{{value7}} (Total Reviews: {{value15}})</h2></p>
+
+                {% for row in value3 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerTab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+         function star(behavior)
+        {
+          //alert("WelcomHotel1");
+          var val1,val2;
+          if(behavior=="WelcomHotel")
+            val1 = {{value8}}
+          else if(behavior=="Leela")
+            star1(behavior);
+          else if(behavior=="Conrad")
+            star2(behavior);
+          else if(behavior=="Windsor")
+            star3(behavior);
+
+
+          val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st1").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st1, #st2").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st1, #st2, #st3").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st1, #st2, #st3, #st4").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st1, #st2, #st3, #st4, #st5").css("color", "yellow");
+
+          }
+        }
+
+        function star1(behavior)
+        {
+        var val1,val2;
+        val1 = {{value9}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st6").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st6, #st7").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st6, #st7, #st8").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st6, #st7, #st8, #st9").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st6, #st7, #st8, #st9, #st10").css("color", "yellow");
+
+          }
+        }
+
+        function star2(behavior)
+        {
+        var val1,val2;
+        val1 = {{value10}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st11").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st11, #st12").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st11, #st12, #st13").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st11, #st12, #st13, #st14").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st11, #st12, #st13, #st14, #st15").css("color", "yellow");
+
+          }
+        }
+
+         function star3(behavior)
+        {
+        var val1,val2;
+        val1 = {{value11}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st16").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st16, #st17").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st16, #st17, #st18").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st16, #st17, #st18, #st19").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st16, #st17, #st18, #st19, #st20").css("color", "yellow");
+
+          }
+        }
+
+
+    </script>
+
+</body>
+
+</html>s

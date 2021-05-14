@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+         * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /* The grid: Three equal columns that floats next to each other */
+        
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+            text-align: center;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .containerTab {
+            padding: 20px;
+            color: black;
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Closable button inside the container tab */
+        
+        .closebtn {
+            float: right;
+            color: black;
+            font-size: 35px;
+            cursor: pointer;
+        }
+        
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            display: inline-table;
+            height: 300px;
+            transition: 1s ease;
+            cursor: pointer;
+            margin:10px;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 6px 2px black(255, 230, 0, 0.75), 0 35px 25px -15px rgba(0, 0, 0, 0.5);
+            position: relative;
+
+        }
+        .card:focus {
+        outline: 0;
+        z-index: 10;
+        background-color: rgba(244, 250, 54, 0.8);
+    }
+    .card:focus:after {
+        position: relative;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 3px solid rgba(244, 250, 54, 0.6);
+    }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+        
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+        
+        .card button:hover {
+            opacity: 0.7;
+        }
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        
+        .row1 {
+            display: flex;
+        }
+        /* Create three equal columns that sits next to each other */
+        
+        .column1 {
+            flex: 33.33%;
+            padding: 5px;
+        }
+        
+        h2 {
+            font-size: 40px;
+        }
+        
+        .button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: left;
+        }
+        
+        .button1 {
+            background-color: black;
+            border: white;
+            border-radius: 12px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            float: none;
+        }
+        
+        input[type=text] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        
+        input,
+        input::-webkit-input-placeholder {
+            font-size: 20px;
+        }
+/* css for review displayed */
+    .container {
+    border: 2px solid #ccc;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 16px;
+    margin: 16px 0
+    }
+
+    .container::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+
+    .container img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    }
+
+    .container span {
+    font-size: 20px;
+    margin-right: 15px;
+    }
+
+    @media (max-width: 500px) {
+    .container {
+        text-align: center;
+    }
+    .container img {
+        margin: auto;
+        float: none;
+        display: block;
+    }
+    }
+    /*code for highlighting card*/
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+select {
+      height : 50px;
+        width: 200px;
+        margin: 10px;
+        font-size :20px;
+    }
+span{
+    color: red;
+    font-size: 40px;
+}
+
+
+ .fa-star {
+        font-size : 50px;
+
+    }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div style="text-align:center">
+        <a href="index.html"><button class="button">Back</button></a>
+
+        <h2><i class="fas fa-hotel"></i> Hotels In Mumbai</h2>
+    </div>
+    <hr>
+    <!-- Three columns -->
+    <div class="row">
+        <div tabindex="1" class="card" onclick="openTab('Hilton');">
+            <img src="https://www.fivestaralliance.com/files/fivestaralliance.com/field/image/nodes/2009/11040/11040_0_hiltonmumbaiinternationalairporthotel_fsa-g.jpg" alt="Hilton" style="width:100%">
+            <h1>Hilton Mumbai </h1>
+            <p class="price"> Rs 4,098</p>
+            <p>Hilton Mumbai International Airport is a 5-minute drive from Chattrapathi Shivaji Airport - international terminal</p>
+            <a href="bookRoom.html?hotel=Hilton,Mumbai" id="a5">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Hilton,Mumbai">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="2" class="card" onclick="openTab('Taj');">
+            <img src="https://realtyquarter.com/wp-content/uploads/2019/08/Taj-Mahal-Palace-Mumbai.jpeg" alt="Taj" style="width:100%">
+            <h1>Taj Mahal Tower</h1>
+            <p class="price"> Rs 5,098</p>
+            <p>Stylishly designed with Indian-inspired decor and architecture, the rooms offer amazing sea, city or pool views.</p>
+            <a href="bookRoom.html?hotel=Taj,Mumbai" id="a6">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Taj,Mumbai">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="3" class="card" onclick="openTab('ITC');">
+            <img src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/35/73/357333130.jpeg" alt="ITC" style="width:100%">
+            <h1>ITC Grand Central</h1>
+            <p class="price"> Rs 3,998</p>
+            <p>Featuring 6 dining options, an outdoor temperature controlled swimming pool and 24- hour fitness centre.</p>
+            <a href="bookRoom.html?hotel=ITC,Mumbai" id="a7">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=ITC,Mumbai">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+        <div tabindex="4" class="card" onclick="openTab('Maratha');">
+            <img src="https://www.windhorsetours.com/wa/images/wh_gallery/gallery/india/hotels_india/mumbai_pune_aurangabad/large/itc_hotel_Grand_martha_sher.jpg" alt="Maratha" style="width:100%">
+            <h1>ITC Maratha</h1>
+            <p class="price"> Rs 6,908</p>
+            <p>The eco-friendly Courtyard by Marriott Pune Chakan takes pride in its modern fitness centre,24-hour restaurant.</p>
+            <a href="bookRoom.html?hotel=Maratha,Mumbai" id="a8">
+                <p><button>Book Room</button></p>
+            </a>
+            <a href="bookTable.html?hotel=Maratha,Mumbai">
+                <p><button>Book Table</button></p>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Full-width columns: (hidden by default) -->
+    <div class="containerTab" id="Hilton" data-behavior="hilton" style="display:none;"  onclick="star('Hilton');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/59/19/591933010.jpeg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/52/89/528963098.jpeg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About Hilton Mumbai International Airport</h2>
+        <p>Located at a 5-minute drive from the Chhatrapati Shivaji International Airport, Hilton Mumbai International Airport offers an outdoor pool, pampering spa and fitness centre. Aside from its 5 dining options, it also has 24-hour room service, business
+            centre and free parking.<br> Hilton Mumbai International Airport is a 5-minute drive from Chattrapathi Shivaji Airport - international terminal, and a 15-minute drive from its domestic terminal. Also a 15-minute drive away are numerous shopping
+            and entertainment options at the Oberoi Mall. The commercial locations of Andheri, Bandra Kurla Complex, Powai and Bombay Exhibition Centre are 20-minute drive away.<br> Decorated in neutral tones with wood accents, spacious rooms feature
+            wooden flooring, over-sized windows and a flat-screen TV. In-room comforts include an armchair with ottoman, bathrobes and premium toiletries.
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+            <i class="fas fa-dumbbell"></i> GYM
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitHiltonM">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed1" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st1"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st2"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st3"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st4"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st5"></i>
+               </div>
+                <p><h2>{{value4}} (Total Reviews: {{value12}})</h2></p>
+
+                {% for row in value %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab"  id="Taj" data-behavior="taj" style="display:none;background:white" onclick="star('Taj');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/31/78/317864456.jpeg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/103/103706033.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About Taj Mahal Tower </h2>
+        <p>Built in 1903, the iconic Taj Mahal Palace stands majestically opposite the Gateway of India, overlooking the Arabian Sea. Sprawled over 2.6 acres, this luxurious hotel boasts 10 restaurants and a variety of traditional Indian therapies at Jiva
+            Spa.
+            <br> Guests are spoiled for choice in dining options – the famous Wasabi by Morimoto offers innovative Japanese cuisine, while other culinary highlights include the Golden Dragon Chinese Restaurant and the poolside Aquarius Lounge. An exclusive
+            private dining experience can be arranged at Chef’s Studio.<br> Stylishly designed with Indian-inspired decor and architecture, the rooms offer amazing sea, city or pool views. Each room comes with a 32-inch flat-screen TV, a well-stocked
+            minibar, free WiFi and a luxurious bathroom. Guests receive 24-hour butler service. Yacht service is available at an additional charge during sailing season.
+
+
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitTajM">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st6"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st7"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st8"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st9"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st10"></i>
+               </div>
+
+                <p><h2>{{value5}} (Total Reviews: {{value15}})</h2></p>
+
+                {% for row in value1 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab" id="ITC" data-behavior="itc" style="display:none;background:white" onclick="star('ITC');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/48/42/484278796.jpeg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partnerimages/35/73/357333166.jpeg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About ITC Grand Central </h2>
+        <p>Located on Dr Babasaheb Ambedkar Road in Mumbai, the luxurious, 5-star ITC Grand Central, Mumbai, A Luxury Collection Hotel features exquisite rooms and suites with city views.<br>ITC Grand Central, Mumbai features an indoor swimming and children’s
+            pool. Guests have access to a spa and wellness centre and can work-out at the hotel’s fitness centre. Modern conveniences include a currency exchange, salon and 24-hour reception.<br> Large windows and carpeted flooring are standard in the
+            air-conditioned rooms and suites. A flat-screen satellite TV, work desk and seating area are provided. Private bathroom comes with a hot/cold shower, hairdryer and free toiletries.<br> ITC Grand Central, Mumbai, A Luxury Collection is 2 km
+            from Dadar Bus Station, Dadar Railway Station and the Mahalaxmi Racecourse. The Jehangir Art Gallery and the Gateway of India are 8 km from the hotel while the Chattrapati Shivaji International Airport is 15 km away.
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitITCM">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed2" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st11"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st12"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st13"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st14"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st15"></i>
+               </div>
+
+                <p><h2>{{value6}} (Total Reviews: {{value13}})</h2></p>
+
+                {% for row in value2 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <div class="containerTab" id="Maratha" data-behavior="maratha" style="display:none;background:white" onclick="star('Maratha');">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="row1">
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/508/50861678.jpg" alt="Snow" style="width:100%">
+            </div>
+            <div class="column1">
+                <img src="https://cf.bstatic.com/images/hotel/max1024x768/153/153414564.jpg" alt="Mountains" style="width:100%">
+            </div>
+        </div>
+        <h2>About ITC Maratha </h2>
+        <p>Inspired by the majestic decor of the Maratha dynasty, ITC Maratha, Mumbai presents 5-star accommodation, an outdoor pool and pampering spa treatments. Just 1.7 km from Mumbai International Airport, it also has 5 dining options.<br> Featuring
+            elegant design, guestrooms are all equipped with a satellite TV and tea/coffee making facilities. Suites include massage chairs and butler services. En suite bathrooms come with a bathtub.<br> The 24-hour Peshwa Pavilion serves both international
+            and Indian dishes, while the Peshawri Speciality Restaurant boasts delicious North-Western Indian food. Other dining options include royal Awadhi dishes at Dum Phukt, South Indian food at Dakshin Coastal, the flavours of the Orient at the
+            Pan Asian Restaurant as well as Bombay High The Bar.
+
+        </p>
+        <h2>Top amenities</h2>
+        <p><i class="fas fa-wifi"></i> Free Wifi
+            <i class="fas fa-swimming-pool"></i> Swimming pool
+            <i class="fas fa-parking"></i> Parking
+            <i class="fas fa-utensils"></i> Restaurant
+            <i class="fas fa-snowflake"></i> A/C
+        </p>
+        <h2>Reviews</h2>
+        <form method="post" action="/submitMarathaM">
+            <p><input type="text" name="Username" placeholder="Enter Username..">
+                <select name="Reviewtype" id="FacilityUsed3" >
+                    <option value="facility">Review for facility?</option>
+                    <option value="Room">Room</option>
+                    <option value="Table">Table</option>
+                    <option value="Overall">Overall</option></select><span>*</span>
+                <input type="text" name="Review" placeholder="Enter review here..">
+                <input type="submit" class="button1" value="Submit Review"></p>
+
+                <div class="stars" >
+                                <i class="fa fa-star" aria-hidden="true"  id = "st16"></i>
+                                <i class="fa fa-star" aria-hidden="true"  id = "st17"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st18"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st19"></i>
+                                <i class="fa fa-star" aria-hidden="true" id = "st20"></i>
+               </div>
+
+                <p><h2>{{value7}} (Total Reviews: {{value14}})</h2></p>
+
+                {% for row in value3 %}
+                <div class="container">
+                    <img src="https://icon2.cleanpng.com/20180331/ffe/kisspng-computer-icons-user-clip-art-user-5abf13dad7aed4.5909364715224718988835.jpg" alt="user" style="width:90px">
+                    <p><span>{{row[0]}}</span> </p>
+                    <p>{{row[1]}}</p>
+                  </div>
+                  
+                  {% endfor %}
+        </form>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerTab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+         function star(behavior)
+        {
+          //alert("hilton1");
+          var val1,val2;
+          if(behavior=="Hilton")
+            val1 = {{value8}}
+          else if(behavior=="Taj")
+            star1(behavior);
+          else if(behavior=="ITC")
+            star2(behavior);
+          else if(behavior=="Maratha")
+            star3(behavior);
+
+
+          val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st1").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st1, #st2").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st1, #st2, #st3").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st1, #st2, #st3, #st4").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st1, #st2, #st3, #st4, #st5").css("color", "yellow");
+
+          }
+        }
+
+        function star1(behavior)
+        {
+        var val1,val2;
+        val1 = {{value9}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st6").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st6, #st7").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st6, #st7, #st8").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st6, #st7, #st8, #st9").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st6, #st7, #st8, #st9, #st10").css("color", "yellow");
+
+          }
+        }
+
+        function star2(behavior)
+        {
+        var val1,val2;
+        val1 = {{value10}}
+        val2 = Math.ceil(val1);
+         // alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st11").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st11, #st12").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st11, #st12, #st13").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st11, #st12, #st13, #st14").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st11, #st12, #st13, #st14, #st15").css("color", "yellow");
+
+          }
+        }
+
+         function star3(behavior)
+        {
+        var val1,val2;
+        val1 = {{value11}}
+        val2 = Math.ceil(val1);
+          //alert(val2);
+           if (val2>=1 && val2<21)
+           {
+
+              $("#st16").css("color", "yellow");
+
+          }
+          else if(val2>=21 && val2<41){
+
+              $("#st16, #st17").css("color", "yellow");
+
+          }
+          else if(val2>=41 && val2<61){
+
+              $("#st16, #st17, #st18").css("color", "yellow");
+
+
+          }
+          else if(val2>=61 && val2<81){
+
+              $("#st16, #st17, #st18, #st19").css("color", "yellow");
+
+          }
+          else if(val2>=81 && val2<101){
+
+              $("#st16, #st17, #st18, #st19, #st20").css("color", "yellow");
+
+          }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
