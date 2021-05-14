@@ -19,7 +19,7 @@ sklearn==0.0
 stopwords==1.0.0
 threadpoolctl==2.1.0
 tqdm==4.56.0
-Jinja==3.0
+Jinja2==2.10
 Flask
 MySQL
 datetime
