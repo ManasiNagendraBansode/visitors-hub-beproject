@@ -375,3 +375,5 @@ ReviewID,Review,Hotel,City,UserName,Polarity
 378,this hotel is good,Windsor,Bangalore,Suyasha,1
 379,good service,Taj,Mumbai,Suyasha,1
 380,bad service,Oberoi,Kolkata,Suyasha,0
+394,nice hotel,Orchid,Pune,Suyasha,1
+395,bad service,Taj,Mumbai,Vamika,0

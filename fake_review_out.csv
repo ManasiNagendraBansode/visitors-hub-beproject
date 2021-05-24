@@ -375,3 +375,5 @@ ReviewID,Review,Hotel,City,UserName,Naive_Bayes T=1/D=0,SVM T=1/D=0,SGD_CLF T=1/
 378,this hotel is good,Windsor,Bangalore,Suyasha,1,1,1,1,1,1
 379,good service,Taj,Mumbai,Suyasha,1,1,1,1,1,1
 380,bad service,Oberoi,Kolkata,Suyasha,1,1,1,1,1,1
+394,nice hotel,Orchid,Pune,Suyasha,1,1,1,1,1,1
+395,bad service,Taj,Mumbai,Vamika,1,1,1,1,1,1
