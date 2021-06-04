@@ -18,6 +18,7 @@ from flask import request
 from flask import jsonify
 from datetime import date, datetime
 
+import hashlib
 # ************************************************************************************************
 
 pw = '52Pr@n@li'
@@ -47,7 +48,7 @@ def home():
 def dashboard():
     conn = MySQLdb.connect("localhost", "root", pw, "beproject")
     cur = conn.cursor()
-    cur.execute('select * from user_registered')
+    cur.execute('select username,email from user_registered')
     data = cur.fetchall()  # data from user_registered database
     cur.execute('select * from book_room')
     data1 = cur.fetchall()  # data from book_room database
@@ -1646,6 +1647,14 @@ def UserLogin():
     return render_template('Userlogin.html')
 
 
+def get_hexdigest(algo, salt, passw):
+    hash = hashlib.sha1()
+    hash.update(('%s%s' % (salt, passw)).encode('utf-8'))
+    password_hash = hash.hexdigest()
+    print(password_hash)
+    return password_hash
+
+
 @app.route('/index.html', methods=['GET', 'POST'])
 def index():
     msg = ''
@@ -1675,8 +1684,11 @@ def index():
         elif not username or not password or not email or not cpassword:
             msg = 'Please fill out the form !'
         else:
-
-            cursor.execute('INSERT INTO user_registered VALUES (% s, % s, % s)', (username, password, email,))
+            import random
+            algo = 'sha1'
+            salt = 'radhakrishna'
+            hsh = get_hexdigest(algo, salt, password)
+            cursor.execute('INSERT INTO user_registered VALUES (% s, % s, % s)', (username, hsh, email,))
             mysql.connection.commit()
             msg = 'You have successfully registered !'
             return render_template('index.html', msg=msg)
@@ -1685,10 +1697,14 @@ def index():
         username = request.form['username']
         password1 = request.form['password1']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM user_registered WHERE username = % s AND password = % s', (username, password1,))
+        cursor.execute('SELECT * FROM user_registered WHERE username = % s', (username,))
         account = cursor.fetchone()
         print(account)
-        if account:
+        enc_password= account['password']
+        algo='sha1'
+        salt= 'radhakrishna'
+
+        if  enc_password == get_hexdigest(algo, salt, password1):
             session['loggedin'] = True
             msg = 'Logged in successfully !'
             return render_template('index.html', msg=msg)
