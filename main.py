@@ -28,8 +28,8 @@ app = Flask(__name__)
 # app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'frd'
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_HOST'] = 'svc-5f63a094-b9ed-4c30-9f33-37e0a5e348f3-ddl.azr-virginia-2.svc.singlestore.com'
+app.config['MYSQL_USER'] = 'admin'
 app.config['MYSQL_PASSWORD'] = pw
 app.config['MYSQL_DB'] = 'beproject'
 
@@ -46,7 +46,7 @@ def home():
 
 @app.route('/dashboard.html', methods=["GET", "POST"])
 def dashboard():
-    conn = MySQLdb.connect("localhost", "root", pw, "beproject")
+    conn = MySQLdb.connect("svc-5f63a094-b9ed-4c30-9f33-37e0a5e348f3-ddl.azr-virginia-2.svc.singlestore.com", "admin", pw, "beproject")
     cur = conn.cursor()
     cur.execute('select username,email from user_registered')
     data = cur.fetchall()  # data from user_registered database
@@ -205,7 +205,7 @@ def dashboard():
         'SELECT ip_address, GROUP_CONCAT(DISTINCT user) FROM review GROUP BY ip_address HAVING COUNT(DISTINCT user) > 2 ORDER BY COUNT(DISTINCT user) DESC;')
     ip = cur.fetchall()
 
-    cur.execute('SELECT *FROM SUSPICIOUS_REVIEWS;')
+    cur.execute('SELECT *FROM suspicious_reviews;')
     datemodule = cur.fetchall()
 
     return render_template("dashboard.html", value=data, value1=data1, value2=data2, value3=PN_Pune_Df,
@@ -237,9 +237,15 @@ def submitOrchidP():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1=int(max1['max(review_id)'])+1
+            max1=str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1,name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
             cursor.execute(
@@ -324,9 +330,15 @@ def submitNovotelP():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
             cursor.execute(
                 'SELECT review_id  FROM review WHERE user like %s and hotel like %s and city like %s order by review_id desc',
@@ -410,9 +422,15 @@ def submitConradP():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
             cursor.execute(
@@ -497,9 +515,16 @@ def submitCourtyardP():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -587,9 +612,15 @@ def submitHiltonM():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
             cursor.execute(
@@ -674,9 +705,16 @@ def submitTajM():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -762,9 +800,16 @@ def submitITCM():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -850,9 +895,16 @@ def submitMarathaM():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -940,9 +992,16 @@ def submitITCK():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -1028,9 +1087,16 @@ def submitOberoiK():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -1116,9 +1182,16 @@ def submitTajK():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -1203,9 +1276,15 @@ def submitMarriottK():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
             cursor.execute(
@@ -1292,9 +1371,15 @@ def submitWelcomHotelB():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
             cursor.execute(
@@ -1381,9 +1466,15 @@ def submitLeelaB():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
             cursor.execute(
@@ -1469,9 +1560,16 @@ def submitConradB():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -1556,9 +1654,16 @@ def submitWindsorB():
             session['loggedin'] = True
             ip = request.remote_addr
             today = date.today()
+            cursor.execute('SELECT max(review_id)  FROM review order by review_id')
+            max1 = cursor.fetchone()
+            print(max1)
+
+            max1 = int(max1['max(review_id)']) + 1
+            max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (% s, % s, % s, %s, %s, %s, %s)',
-                (name, hotel, city, review, ip, today, reviewtype))
+                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                (max1, name, hotel, city, review, ip, today, reviewtype))
+
             mysql.connection.commit()
 
             cursor.execute(
@@ -1644,7 +1749,7 @@ def login():
 
 @app.route('/UserLogin.html')
 def UserLogin():
-    return render_template('Userlogin.html')
+    return render_template('UserLogin.html')
 
 
 def get_hexdigest(algo, salt, passw):
@@ -1847,7 +1952,7 @@ def bangalore():
 @app.route('/hotelsInPune.html')
 def hotelsInPune():
     print("In hotel pune ")
-    conn = MySQLdb.connect("localhost", "root", pw, "beproject")
+    conn = MySQLdb.connect("svc-5f63a094-b9ed-4c30-9f33-37e0a5e348f3-ddl.azr-virginia-2.svc.singlestore.com", "admin", pw, "beproject")
     cur = conn.cursor()
     cur.execute('select user,reviews from review where hotel="Orchid" and city="Pune"')
     data = cur.fetchall()  # data from user_registered database
@@ -1898,7 +2003,7 @@ def hotelsInPune():
 
 @app.route('/hotelsInMumbai.html')
 def hotelsInMumbai():
-    conn = MySQLdb.connect("localhost", "root", pw, "beproject")
+    conn = MySQLdb.connect("svc-5f63a094-b9ed-4c30-9f33-37e0a5e348f3-ddl.azr-virginia-2.svc.singlestore.com", "admin", pw, "beproject")
     cur = conn.cursor()
     cur.execute('select user,reviews from review where hotel="Hilton" and city="Mumbai"')
     data = cur.fetchall()  # data from user_registered database
@@ -1942,7 +2047,7 @@ def hotelsInMumbai():
 
 @app.route('/hotelsInKolkata.html')
 def hotelsInKolkata():
-    conn = MySQLdb.connect("localhost", "root", pw, "beproject")
+    conn = MySQLdb.connect("svc-5f63a094-b9ed-4c30-9f33-37e0a5e348f3-ddl.azr-virginia-2.svc.singlestore.com", "admin", pw, "beproject")
     cur = conn.cursor()
     cur.execute('select user,reviews from review where hotel="ITC" and city="Kolkata"')
     data = cur.fetchall()  # data from user_registered database
@@ -1986,7 +2091,7 @@ def hotelsInKolkata():
 
 @app.route('/hotelsInBangalore.html')
 def hotelsInBangalore():
-    conn = MySQLdb.connect("localhost", "root", pw, "beproject")
+    conn = MySQLdb.connect("localhost", "admin", pw, "beproject")
     cur = conn.cursor()
     cur.execute('select user,reviews from review where hotel="WelcomHotel" and city="Bangalore"')
     data = cur.fetchall()  # data from user_registered database
