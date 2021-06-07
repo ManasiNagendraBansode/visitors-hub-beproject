@@ -2284,4 +2284,8 @@ if __name__ == "__main__":
     Fake_review_5_Algos.mlmodels_2()
 
     app.run(debug=True)
+    mlmodel.mlmodel()
+    Fake_review_5_Algos.mlmodels_2()
+
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
 
