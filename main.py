@@ -2091,7 +2091,7 @@ def hotelsInKolkata():
 
 @app.route('/hotelsInBangalore.html')
 def hotelsInBangalore():
-    conn = MySQLdb.connect("localhost", "admin", pw, "beproject")
+    conn = MySQLdb.connect("svc-5f63a094-b9ed-4c30-9f33-37e0a5e348f3-ddl.azr-virginia-2.svc.singlestore.com", "admin", pw, "beproject")
     cur = conn.cursor()
     cur.execute('select user,reviews from review where hotel="WelcomHotel" and city="Bangalore"')
     data = cur.fetchall()  # data from user_registered database
