@@ -2270,6 +2270,9 @@ def delete(ReviewID):
             print(updatedlist)
             i=updatefile(updatedlist)
             print(i)
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+ 
     return redirect(url_for('home1'))
 
 def updatefile(updatedlist):
