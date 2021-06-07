@@ -26,4 +26,4 @@ bs4
 statistics
 MySQL
 datetime
-
+pickle
