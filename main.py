@@ -305,6 +305,9 @@ def submitOrchidP():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s,% s, % s, % s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+
 
         else:
             return render_template('alertpune.html')
@@ -2284,8 +2287,6 @@ if __name__ == "__main__":
     Fake_review_5_Algos.mlmodels_2()
 
     app.run(debug=True)
-    mlmodel.mlmodel()
-    Fake_review_5_Algos.mlmodels_2()
-
+   
     app.config['TEMPLATES_AUTO_RELOAD'] = True
 
