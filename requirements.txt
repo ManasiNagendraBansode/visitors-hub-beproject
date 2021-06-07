@@ -19,11 +19,11 @@ sklearn
 stopwords
 threadpoolctl
 tqdm
-Jinja2
+Jinja2==3.0
 Flask
 flask_mysqldb
 bs4
 statistics
 MySQL
 datetime
-
+pickle
