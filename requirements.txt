@@ -19,7 +19,7 @@ sklearn
 stopwords
 threadpoolctl
 tqdm
-Jinja2==2.10
+Jinja2
 Flask
 flask_mysqldb
 bs4
