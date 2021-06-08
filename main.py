@@ -399,6 +399,10 @@ def submitNovotelP():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s,% s, % s, % s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+                        
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInPune.html')
         else:
@@ -492,6 +496,9 @@ def submitConradP():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s,% s, % s, % s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInPune.html')
         else:
@@ -586,6 +593,9 @@ def submitCourtyardP():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s,% s, % s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInPune.html')
         else:
@@ -682,6 +692,9 @@ def submitHiltonM():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s,% s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInMumbai.html')
         else:
@@ -776,6 +789,9 @@ def submitTajM():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s,% s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInMumbai.html')
         else:
@@ -871,6 +887,9 @@ def submitITCM():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s, %s, %s,% s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInMumbai.html')
         else:
@@ -966,6 +985,9 @@ def submitMarathaM():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s, %s,% s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInMumbai.html')
         else:
@@ -1063,6 +1085,9 @@ def submitITCK():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s,% s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInKolkata.html')
         else:
@@ -1158,6 +1183,9 @@ def submitOberoiK():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s,% s, % s, % s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInKolkata.html')
         else:
@@ -1253,6 +1281,9 @@ def submitTajK():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s,% s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInKolkata.html')
         else:
@@ -1345,6 +1376,9 @@ def submitMarriottK():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s,% s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInKolkata.html')
         else:
@@ -1442,6 +1476,9 @@ def submitWelcomHotelB():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s,% s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInBangalore.html')
         else:
@@ -1536,6 +1573,9 @@ def submitLeelaB():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s,% s, % s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInBangalore.html')
         else:
@@ -1631,6 +1671,9 @@ def submitConradB():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s,% s, % s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInBangalore.html')
         else:
@@ -1725,6 +1768,9 @@ def submitWindsorB():
                         cursor.execute('INSERT INTO suspicious_reviews VALUES (% s, % s, % s,% s, %s, %s, %s)',
                                        (reviewID, name, hotel, city, review, today, reviewtype))
                         mysql.connection.commit()
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
+            
 
             return render_template('hotelsInBangalore.html')
         else:
@@ -1740,9 +1786,9 @@ def index1():
 
 
 
-@app.route('/HomePage.html')
+@app.route('/dashboard.html')
 def home1():
-    return render_template('HomePage.html')
+    return render_template('dashboard.html')
 
 
 @app.route('/login.html')
@@ -2246,6 +2292,8 @@ def delete(ReviewID):
             print(updatedlist)
             i = updatefile(updatedlist)
             print(i)
+            mlmodel.mlmodel()
+            Fake_review_5_Algos.mlmodels_2()
 
     else:
         updatedlist = []
