@@ -204,7 +204,7 @@ def dashboard():
     '''
 
     cur.execute(
-        'SELECT ip_address, GROUP_CONCAT(DISTINCT user) FROM review GROUP BY ip_address HAVING COUNT(DISTINCT user) > 2 ORDER BY COUNT(DISTINCT user) DESC;')
+        'SELECT mac_address, GROUP_CONCAT(DISTINCT user) FROM review GROUP BY mac_address HAVING COUNT(DISTINCT user) > 2 ORDER BY COUNT(DISTINCT user) DESC;')
     ip = cur.fetchall()
 
     cur.execute('SELECT *FROM suspicious_reviews;')
@@ -246,7 +246,7 @@ def submitOrchidP():
             max1=int(max1['max(review_id)'])+1
             max1=str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1,name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
@@ -342,7 +342,7 @@ def submitNovotelP():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
             cursor.execute(
@@ -438,7 +438,7 @@ def submitConradP():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
@@ -534,7 +534,7 @@ def submitCourtyardP():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -634,7 +634,7 @@ def submitHiltonM():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
@@ -730,7 +730,7 @@ def submitTajM():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -828,7 +828,7 @@ def submitITCM():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -926,7 +926,7 @@ def submitMarathaM():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -1026,7 +1026,7 @@ def submitITCK():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -1124,7 +1124,7 @@ def submitOberoiK():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -1222,7 +1222,7 @@ def submitTajK():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -1319,7 +1319,7 @@ def submitMarriottK():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
@@ -1417,7 +1417,7 @@ def submitWelcomHotelB():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
@@ -1515,7 +1515,7 @@ def submitLeelaB():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
             mysql.connection.commit()
 
@@ -1612,7 +1612,7 @@ def submitConradB():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
@@ -1709,7 +1709,7 @@ def submitWindsorB():
             max1 = int(max1['max(review_id)']) + 1
             max1 = str(max1)
             cursor.execute(
-                'INSERT INTO review(review_id,user,hotel,city,reviews,ip_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
+                'INSERT INTO review(review_id,user,hotel,city,reviews,mac_address,today,reviewtype) VALUES (%s,% s, % s, % s, %s, %s, %s, %s)',
                 (max1, name, hotel, city, review, ip, today, reviewtype))
 
             mysql.connection.commit()
