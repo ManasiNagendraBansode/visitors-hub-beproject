@@ -19,6 +19,8 @@ from flask import jsonify
 from datetime import date, datetime
 
 import hashlib
+from getmac import get_mac_address as gma
+
 # ************************************************************************************************
 
 pw = '52Pr@n@li'
@@ -235,7 +237,7 @@ def submitOrchidP():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -331,7 +333,7 @@ def submitNovotelP():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -427,7 +429,7 @@ def submitConradP():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -523,7 +525,7 @@ def submitCourtyardP():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -623,7 +625,7 @@ def submitHiltonM():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -719,7 +721,7 @@ def submitTajM():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -817,7 +819,7 @@ def submitITCM():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -915,7 +917,7 @@ def submitMarathaM():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1015,7 +1017,7 @@ def submitITCK():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1113,7 +1115,7 @@ def submitOberoiK():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1211,7 +1213,7 @@ def submitTajK():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1308,7 +1310,7 @@ def submitMarriottK():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1406,7 +1408,7 @@ def submitWelcomHotelB():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1504,7 +1506,7 @@ def submitLeelaB():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1601,7 +1603,7 @@ def submitConradB():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
@@ -1698,7 +1700,7 @@ def submitWindsorB():
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            ip = request.remote_addr
+            ip = gma()
             today = date.today()
             cursor.execute('SELECT max(review_id)  FROM review order by review_id')
             max1 = cursor.fetchone()
