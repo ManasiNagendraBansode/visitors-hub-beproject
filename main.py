@@ -1784,6 +1784,9 @@ def submitWindsorB():
 def index1():
     return render_template('index.html')
 
+@app.route('/HomePage.html')
+def homepage():
+    return render_template('HomePage.html')
 
 
 @app.route('/dashboard.html')
