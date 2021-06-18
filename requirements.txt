@@ -26,4 +26,5 @@ bs4
 statistics
 MySQL
 datetime
+os
 
