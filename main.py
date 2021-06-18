@@ -19,6 +19,7 @@ from flask import jsonify
 from datetime import date, datetime
 
 import hashlib
+import os
 
 
 # ************************************************************************************************
@@ -36,7 +37,8 @@ app.config['MYSQL_PASSWORD'] = pw
 app.config['MYSQL_DB'] = 'beproject'
 
 mysql = MySQL(app)
-
+app_dir = os.path.dirname(os.path.abspath(__file__))
+app.config['UPLOAD_FOLDER'] = os.path.join(app_dir, 'static')
 
 # decorating index function with the app.route with url as /login
 
@@ -202,7 +204,11 @@ def dashboard():
     Kolkata_Df = pd.DataFrame({'User':Kolkatauser,'Hotels': KolkataHotels, 'Deceptive Reviews': KolkataReviews})
     Bangalore_Df = pd.DataFrame({ 'User':Bangloreuser,'Hotels': BangloreHotels,'Deceptive Reviews': BangloreReviews})
     '''
-
+    puneImage= os.path.join(app.config['UPLOAD_FOLDER'],'Punegraph.jpg')
+    MumbaiImage= os.path.join(app.config['UPLOAD_FOLDER'],'Mumbai.jpg')
+    KolkataImage= os.path.join(app.config['UPLOAD_FOLDER'],'Kolkata.jpg')
+    BangloreImage= os.path.join(app.config['UPLOAD_FOLDER'],'Bangalore.jpg')
+    
     cur.execute(
         'SELECT ip_address, GROUP_CONCAT(DISTINCT user) FROM review GROUP BY ip_address HAVING COUNT(DISTINCT user) > 2 ORDER BY COUNT(DISTINCT user) DESC;')
     ip = cur.fetchall()
@@ -216,7 +222,7 @@ def dashboard():
                            value12=Mumbaiuser, value13=MumbaiHotels, value14=MumbaiReviews, value15=Kolkatauser,
                            value16=KolkataHotels, value17=KolkataReviews, value18=Bangloreuser, value19=BangloreHotels,
                            value20=BangloreReviews, value21=len(Puneuser), value22=len(Mumbaiuser),
-                           value23=len(Kolkatauser), value24=len(Bangloreuser),value25=puneID,value26=mumbaiID,value27=kolkataID,value28=bangaloreID)
+                           value23=len(Kolkatauser), value24=len(Bangloreuser),value25=puneID,value26=mumbaiID,value27=kolkataID,value28=bangaloreID,pune_image=puneImage,mumbai_image=MumbaiImage,kolkata_image=KolkataImage,bangalore_image=BangloreImage)
 
 
 # ****************************************************  PUNE ************************************************8
