@@ -281,28 +281,29 @@
                 {% block content %}
                 {{ value3.to_html(classes="table table-striped") | safe}}
                 {% endblock %}
-
+                <img src="{{url_for('static',filename = 'images/Punegraph.jpg')}}">
             </div>
+            
 
             <div id="mumbai" class="containerTab" style="display:none;">
                 {% block content1 %}
                 {{ value4.to_html(classes="table table-striped") | safe}}
                 {% endblock %}
-
+                <img src="{{url_for('static',filename = 'images/Mumbai.jpg')}}">
             </div>
 
             <div id="bangalore" class="containerTab" style="display:none;">
                 {% block content2 %}
                 {{ value6.to_html(classes="table table-striped") | safe}}
                 {% endblock %}
-
+                <img src="{{url_for('static',filename = 'images/Bangalore.jpg')}}">
             </div>
 
             <div id="kolkata" class="containerTab" style="display:none;">
                 {% block content3 %}
                 {{ value5.to_html(classes="table table-striped") | safe}}
                 {% endblock %}
-
+                <img src="{{url_for('static',filename = 'images/Kolkata.jpg')}}">
             </div>
 
     </div>
