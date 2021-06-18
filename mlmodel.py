@@ -97,7 +97,7 @@ def mlmodel():
 
     # Create legend & Show graphic
     plt.legend(handles=[p1, p2],loc='upper right')
-    plt.savefig('Punegraph.jpg')
+    plt.savefig('static/images/Punegraph.jpg')
     plt.clf()
     #plt.show()
 
@@ -141,7 +141,7 @@ def mlmodel():
 
     # Create legend & Show graphic
     plt.legend(handles=[p1, p2],loc='upper right')
-    plt.savefig('Mumbai.jpg')
+    plt.savefig('static/images/Mumbai.jpg')
     plt.clf()
     #plt.show()
 
@@ -185,7 +185,7 @@ def mlmodel():
 
     # Create legend & Show graphic
     plt.legend(handles=[p1, p2],loc='upper right')
-    plt.savefig('Kolkata.jpg')
+    plt.savefig('static/images/Kolkata.jpg')
     plt.clf()
     #plt.show()
 
@@ -236,7 +236,7 @@ def mlmodel():
     plt.legend(handles=[p1, p2],loc='upper right')
   #  axis.plot(b1,b2)
     #return fig
-    plt.savefig('Bangalore.jpg')
+    plt.savefig('static/images/Bangalore.jpg')
     plt.clf()
     #plt.show()
     print("\n")
